@@ -1,12 +1,13 @@
+// RequestQuote Component
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation" // Correct import for Next.js App Router
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -16,25 +17,15 @@ import { CreditCardIcon, WalletIcon, CurrencyDollarIcon } from '@heroicons/react
 
 export default function RequestQuote() {
   const [date, setDate] = useState<Date>()
-  const [showSummary, setShowSummary] = useState(false)
+  const router = useRouter()  // Now correctly using the App Router
 
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    rentalDate: "",
-    duration: "",
-    equipment: "",
-    quantity: "",
-    location: "",
-    payment: "",
-    message: "",
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setShowSummary(true)
+
+    // Handle form data here if needed
+
+    // Navigate to submit.tsx (route: /submit)
+    router.push("/submit")
   }
 
   return (
@@ -43,51 +34,28 @@ export default function RequestQuote() {
         <h1 className="text-2xl font-bold mb-6 text-center">REQUEST QUOTE NOW</h1>
 
         <div className="bg-background/50 backdrop-blur-sm border border-border/20 rounded-lg p-6 md:p-8">
+          {/* Make sure the parent component is not wrapping this form */}
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
+              {/* form fields here (same as yours) */}
               <div>
                 <Label htmlFor="name">Full Name</Label>
-                <Input
-                  id="name"
-                  placeholder="Enter your full name"
-                  className="bg-background/50"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
+                <Input id="name" placeholder="Enter your full name" className="bg-background/50" />
               </div>
 
               <div>
                 <Label htmlFor="company">Company Name</Label>
-                <Input
-                  id="company"
-                  placeholder="Enter your company name"
-                  className="bg-background/50"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                />
+                <Input id="company" placeholder="Enter your company name" className="bg-background/50" />
               </div>
 
               <div>
                 <Label htmlFor="email">Email Address</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="bg-background/50"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
+                <Input id="email" type="email" placeholder="Enter your email address" className="bg-background/50" />
               </div>
 
               <div>
                 <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  placeholder="Enter your phone number"
-                  className="bg-background/50"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                />
+                <Input id="phone" placeholder="Enter your phone number" className="bg-background/50" />
               </div>
 
               <div>
@@ -106,28 +74,20 @@ export default function RequestQuote() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={(selectedDate) => {
-                        setDate(selectedDate)
-                        setFormData({ ...formData, rentalDate: selectedDate ? format(selectedDate, "PPP") : "" })
-                      }}
-                      initialFocus
-                    />
+                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
                   </PopoverContent>
                 </Popover>
               </div>
 
               <div>
                 <Label htmlFor="duration">Rental Duration</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, duration: value })}>
+                <Select>
                   <SelectTrigger className="bg-background/50">
                     <SelectValue placeholder="Select duration" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="1-day">1 Day</SelectItem>
-                    <SelectItem value="2-3-days">2–3 Days</SelectItem>
+                    <SelectItem value="2-3-days">2-3 Days</SelectItem>
                     <SelectItem value="1-week">1 Week</SelectItem>
                     <SelectItem value="2-weeks">2 Weeks</SelectItem>
                     <SelectItem value="1-month">1 Month</SelectItem>
@@ -140,7 +100,7 @@ export default function RequestQuote() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="equipment">Equipment Needed</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, equipment: value })}>
+                <Select>
                   <SelectTrigger className="bg-background/50">
                     <SelectValue placeholder="Select equipment type" />
                   </SelectTrigger>
@@ -159,30 +119,17 @@ export default function RequestQuote() {
 
               <div>
                 <Label htmlFor="quantity">Quantity</Label>
-                <Input
-                  id="quantity"
-                  type="number"
-                  placeholder="Enter quantity needed"
-                  className="bg-background/50"
-                  value={formData.quantity}
-                  onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                />
+                <Input id="quantity" type="number" placeholder="Enter quantity needed" className="bg-background/50" />
               </div>
 
               <div>
                 <Label htmlFor="location">Delivery Location</Label>
-                <Input
-                  id="location"
-                  placeholder="Enter delivery address"
-                  className="bg-background/50"
-                  value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                />
+                <Input id="location" placeholder="Enter delivery address" className="bg-background/50" />
               </div>
 
               <div>
                 <Label htmlFor="payment">Payment Method</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, payment: value })}>
+                <Select>
                   <SelectTrigger className="bg-background/50">
                     <SelectValue placeholder="Select payment method" />
                   </SelectTrigger>
@@ -195,7 +142,7 @@ export default function RequestQuote() {
                       <CurrencyDollarIcon className="inline-block w-5 h-5 mr-2" />
                       Cash On Delivery
                     </SelectItem>
-                    <SelectItem value="ewallet">
+                    <SelectItem value="payment">
                       <WalletIcon className="inline-block w-5 h-5 mr-2" />
                       Payment Center / E-Wallet
                     </SelectItem>
@@ -209,8 +156,6 @@ export default function RequestQuote() {
                   id="message"
                   placeholder="Please provide any specific requirements or questions"
                   className="h-32 bg-background/50"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
               </div>
             </div>
@@ -223,53 +168,6 @@ export default function RequestQuote() {
           </form>
         </div>
       </div>
-
-      {/* Summary Dialog */}
-    <Dialog
-  open={showSummary}
-  onOpenChange={(isOpen) => {
-    setShowSummary(isOpen)
-    if (!isOpen) {
-      // Clear form when dialog is closed
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        rentalDate: "",
-        duration: "",
-        equipment: "",
-        quantity: "",
-        location: "",
-        payment: "",
-        message: "",
-      })
-      setDate(undefined)
-    }
-  }}
->
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Request Summary</DialogTitle>
-      <DialogDescription>
-        <ul className="space-y-2 mt-4 text-sm">
-          <li><strong>Full Name:</strong> {formData.name}</li>
-          <li><strong>Company:</strong> {formData.company}</li>
-          <li><strong>Email:</strong> {formData.email}</li>
-          <li><strong>Phone:</strong> {formData.phone}</li>
-          <li><strong>Rental Date:</strong> {formData.rentalDate}</li>
-          <li><strong>Duration:</strong> {formData.duration}</li>
-          <li><strong>Equipment:</strong> {formData.equipment}</li>
-          <li><strong>Quantity:</strong> {formData.quantity}</li>
-          <li><strong>Location:</strong> {formData.location}</li>
-          <li><strong>Payment Method:</strong> {formData.payment}</li>
-          <li><strong>Message:</strong> {formData.message}</li>
-        </ul>
-      </DialogDescription>
-    </DialogHeader>
-  </DialogContent>
-</Dialog>
-
     </div>
   )
 }
