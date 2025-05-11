@@ -58,7 +58,7 @@ export default function Services() {
           </div>
           <div className="relative h-64 md:h-auto rounded-lg overflow-hidden">
             <Image
-              src="/placeholder.svg?height=400&width=600"
+              src="https://www.rentacomputer.com/pic/computer-user.webp?height=400&width=600"
               alt="Our services"
               fill
               className="object-cover"
