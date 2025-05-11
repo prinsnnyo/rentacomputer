@@ -187,15 +187,15 @@ export default function RequestQuote() {
                     <SelectValue placeholder="Select payment method" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="credit">
+                    <SelectItem value="Credit / Debit Card">
                       <CreditCardIcon className="inline-block w-5 h-5 mr-2" />
                       Credit / Debit Card
                     </SelectItem>
-                    <SelectItem value="cod">
+                    <SelectItem value="Cash On Delivery">
                       <CurrencyDollarIcon className="inline-block w-5 h-5 mr-2" />
                       Cash On Delivery
                     </SelectItem>
-                    <SelectItem value="ewallet">
+                    <SelectItem value="Payment Center / E-Wallet">
                       <WalletIcon className="inline-block w-5 h-5 mr-2" />
                       Payment Center / E-Wallet
                     </SelectItem>
@@ -249,25 +249,32 @@ export default function RequestQuote() {
   }}
 >
   <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Request Summary</DialogTitle>
-      <DialogDescription>
-        <ul className="space-y-2 mt-4 text-sm">
-          <li><strong>Full Name:</strong> {formData.name}</li>
-          <li><strong>Company:</strong> {formData.company}</li>
-          <li><strong>Email:</strong> {formData.email}</li>
-          <li><strong>Phone:</strong> {formData.phone}</li>
-          <li><strong>Rental Date:</strong> {formData.rentalDate}</li>
-          <li><strong>Duration:</strong> {formData.duration}</li>
-          <li><strong>Equipment:</strong> {formData.equipment}</li>
-          <li><strong>Quantity:</strong> {formData.quantity}</li>
-          <li><strong>Location:</strong> {formData.location}</li>
-          <li><strong>Payment Method:</strong> {formData.payment}</li>
-          <li><strong>Message:</strong> {formData.message}</li>
-        </ul>
-      </DialogDescription>
-    </DialogHeader>
-  </DialogContent>
+  <DialogHeader className="text-center">
+    <DialogTitle className="text-center">Request Summary</DialogTitle>
+    <DialogDescription>
+      <div className="text-center">
+        <p className="mt-2 text-sm text-primary font-medium">
+          ✅ Thank you for submitting a quote request! Please check your notifications to monitor the status.
+        </p>
+      </div>
+      <ul className="space-y-2 mt-4 text-sm text-left">
+        <li><strong>Full Name:</strong> {formData.name}</li>
+        <li><strong>Company:</strong> {formData.company}</li>
+        <li><strong>Email:</strong> {formData.email}</li>
+        <li><strong>Phone:</strong> {formData.phone}</li>
+        <li><strong>Rental Date:</strong> {formData.rentalDate}</li>
+        <li><strong>Duration:</strong> {formData.duration}</li>
+        <li><strong>Equipment:</strong> {formData.equipment}</li>
+        <li><strong>Quantity:</strong> {formData.quantity}</li>
+        <li><strong>Location:</strong> {formData.location}</li>
+        <li><strong>Payment Method:</strong> {formData.payment}</li>
+        <li><strong>Message:</strong> {formData.message}</li>
+      </ul>
+    </DialogDescription>
+  </DialogHeader>
+</DialogContent>
+
+
 </Dialog>
 
     </div>

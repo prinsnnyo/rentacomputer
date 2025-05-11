@@ -45,6 +45,47 @@ export default function Products() {
           </div>
         </TabsContent>
 
+        <TabsContent value="servers" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servers.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="av" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {av.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="networking" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {networking.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="printers" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {printers.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="accessories" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {accessories.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </TabsContent>
+
+
         {/* Other tabs would follow the same pattern */}
       </Tabs>
 
@@ -182,4 +223,143 @@ const tablets: Product[] = [
   },
 ]
 
+
+const servers: Product[] = [
+  {
+    id: 10,
+    name: "Dell PowerEdge R740",
+    description: "Dual Intel Xeon, 128GB RAM, 4TB HDD, RAID Controller",
+    dailyRate: "9,500.00",
+    category: "servers",
+    image: "https://smarket.dellemc-solution.com/content/index.php?mappingId=5dc4ac5e31de9825712c17b4e15b6cb8",
+  },
+  {
+    id: 11,
+    name: "HPE ProLiant DL380 Gen10",
+    description: "Intel Xeon Silver, 64GB RAM, 2TB SSD, Redundant PSU",
+    dailyRate: "8,200.00",
+    category: "servers",
+    image: "https://assets.ext.hpe.com/is/image/hpedam/s00006498?$superzoom$",
+  },
+   {
+    id: 24,
+    name: "Dell PowerEdge R740",
+    description: "Intel Xeon Silver, 64GB RAM, 2x1TB SSD, RAID Controller",
+    dailyRate: "7,800.00",
+    category: "servers",
+    image: "https://smarket.dellemc-solution.com/content/index.php?mappingId=5dc4ac5e31de9825712c17b4e15b6cb8",
+  },
+]
+
+const av: Product[] = [
+  {
+    id: 12,
+    name: "Epson Projector",
+    description: "Full HD 1080p, 3,000 Lumens, HDMI Input",
+    dailyRate: "1,200.00",
+    category: "av",
+    image: "https://mediaserver.goepson.com/ImConvServlet/imconv/2f7a7fbbf14af39b2d69bd55393cedf295575501/1200Wx1200H?use=banner&assetDescr=EB-2255U_03",
+  },
+  {
+    id: 13,
+    name: "Yamaha Portable PA System",
+    description: "Bluetooth, Mixer, Wireless Mic Support",
+    dailyRate: "2,000.00",
+    category: "av",
+    image: "https://galerimusikindonesia.com/image/data/banner/banner%20kategori/Portable%20PA/PA%20System.png",
+  },
+  {
+  id: 20,
+  name: "Sony Wireless Microphone System",
+  description: "Dual Channel UHF Mic System, Rechargeable",
+  dailyRate: "1,400.00",
+  category: "av",
+  image: "https://www.pngkit.com/png/full/415-4152050_7-ws800-digital-wireless-microphone-systems.png",
+}
+
+]
+
+const networking: Product[] = [
+  {
+    id: 14,
+    name: "Cisco Catalyst 2960X",
+    description: "48 Ports, Layer 2/3 Switching, PoE",
+    dailyRate: "2,750.00",
+    category: "networking",
+    image: "https://www.cisco.com/c/dam/global/en_au/solutions/small-business/assets/images/connect/ws-c2960x-48fps-l_035.png",
+  },
+  {
+    id: 15,
+    name: "Ubiquiti UniFi Access Point",
+    description: "Dual Band, 1.7 Gbps Throughput, Mesh Support",
+    dailyRate: "1,500.00",
+    category: "networking",
+    image: "https://cdn.ecomm.ui.com/products/6d5c6141-e2e9-416a-b789-53e59416bb1a/853bc73b-f65b-4e59-a171-75c9a4a4615e.png",
+  },
+  {
+  id: 21,
+  name: "TP-Link Gigabit Router",
+  description: "AC1750 Dual Band, 3 Antennas, USB Port",
+  dailyRate: "800.00",
+  category: "networking",
+  image: "https://i.pinimg.com/originals/a2/08/d4/a208d457bc7171d2026ff4606472f555.png",
+}
+
+]
+
+const printers: Product[] = [
+  {
+    id: 16,
+    name: "HP LaserJet Pro M404n",
+    description: "Monochrome, Ethernet, 38 ppm",
+    dailyRate: "900.00",
+    category: "printers",
+    image: "https://globallaser.net/application/files/5415/5965/9681/M404n_R.png",
+  },
+  {
+    id: 17,
+    name: "Epson EcoTank L3210",
+    description: "All-in-One, Color Ink Tank, USB",
+    dailyRate: "1,100.00",
+    category: "printers",
+    image: "https://megacompuworldjaipur.com/image/cache/catalog/Product/Printer/Epson/L3210-800x500.png",
+  },
+  {
+  id: 22,
+  name: "Canon PIXMA G3020",
+  description: "Wireless, Ink Tank, Color Printing",
+  dailyRate: "1,250.00",
+  category: "printers",
+  image: "https://www.allprinters.my/prodimages/G3020.jpg",
+}
+
+]
+
+const accessories: Product[] = [
+  {
+    id: 18,
+    name: "Logitech MX Master 3",
+    description: "Wireless Mouse, USB-C Rechargeable",
+    dailyRate: "300.00",
+    category: "accessories",
+    image: "https://content.presspage.com/uploads/1465/1920_high-resolution-png-mxmaster3sprofilepalegrey.png",
+  },
+  {
+    id: 19,
+    name: "Dell USB-C Docking Station",
+    description: "Dual Display Support, Power Delivery",
+    dailyRate: "450.00",
+    category: "accessories",
+    image: "https://i.dell.com/is/image/DellContent/content/dam/images/products/electronics-and-accessories/dell/docks-and-stands/ud22/dlud22-cbt-04-bk.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=928&qlt=100,1&resMode=sharp2&size=928,402&chrss=full",
+  },
+  {
+  id: 23,
+  name: "Anker Power Bank 20,000mAh",
+  description: "Fast Charging, USB-C, Compact",
+  dailyRate: "200.00",
+  category: "accessories",
+  image: "https://www.alphastore.com.kw/wp-content/uploads/2024/06/Anker-Power-Bank-20K-30W-Black-1.png",
+}
+
+]
 
