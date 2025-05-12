@@ -10,8 +10,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Rentacomputer - IT Equipment Rental Solutions",
   description: "Professional IT equipment rental services for businesses and events",
-    generator: 'v0.dev'
-}
+  generator: 'v0.dev',
+  icons: {
+    icon: '/rentacomputercom_logo.jpg', 
+  },
+};
 
 export default function RootLayout({
   children,
