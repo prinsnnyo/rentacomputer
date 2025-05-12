@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Phone, Mail } from "lucide-react"
+import { Phone, Mail, ArrowRight, FolderOpen, Wrench } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -24,17 +24,20 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-semibold mb-3">QUICK LINKS</h3>
             <ul className="space-y-1">
-              <li>
+              <li className="flex items-center gap-2">
+                <ArrowRight className="h-3 w-3 text-primary" />
                 <Link href="/request" className="text-xs hover:text-primary">
                   Request a Quote
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center gap-2">
+                <FolderOpen className="h-3 w-3 text-primary" />
                 <Link href="/products" className="text-xs hover:text-primary">
                   Browse Products
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center gap-2">
+                <Wrench className="h-3 w-3 text-primary" />
                 <Link href="/services" className="text-xs hover:text-primary">
                   Our Services
                 </Link>
@@ -42,20 +45,35 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
-            <p className="text-xs mb-2">Providing professional IT equipment rental services since 1987.</p>
-            <div className="flex space-x-2 mt-3">
-              {["facebook", "twitter", "linkedin", "youtube", "instagram"].map((social) => (
-                <Link
-                  key={social}
-                  href={`#${social}`}
-                  className="w-5 h-5 rounded-full bg-foreground/20 flex items-center justify-center hover:bg-primary transition-colors"
-                >
-                  <span className="sr-only">{social}</span>
-                </Link>
-              ))}
-            </div>
+          <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
+          <p className="text-xs mb-2">Providing professional IT equipment rental services since 1987.</p>
+          <div className="flex space-x-2 mt-3">
+            {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
+              <Link
+                key={social}
+                href={`#${social}`}
+                className="w-7 h-7 rounded-full bg-foreground/20 flex items-center justify-center hover:bg-primary transition-colors"
+              >
+                <img
+                  src={
+                    social === "facebook"
+                      ? "/fb.png"
+                      : social === "x"
+                      ? "/X_logo.jpg" 
+                      : social === "linkedin"
+                      ? "/LinkedIn_logo_initials.png"
+                      : social === "youtube"
+                      ? "/yt.png"
+                      : "/ig.png"
+                  }
+                  alt={social}
+                  className="w-7 h-7" 
+                />
+                <span className="sr-only">{social}</span>
+              </Link>
+            ))}
           </div>
+        </div>
         </div>
       </div>
     </footer>

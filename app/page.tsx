@@ -1,11 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card"
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-1">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-background to-background/80 border-b border-border/10">
         <div className="absolute inset-0 bg-[url('https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/pc/matebook-14-2022/img/additions/huawei-matebook-14-2022-kv.png')] bg-cover bg-center opacity-40"></div>
@@ -29,7 +30,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Equipment Categories */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-8 text-center">RENTAL EQUIPMENT CATEGORIES</h2>
@@ -49,8 +49,11 @@ export default function Home() {
                 />
                 <h3 className="font-semibold mb-2 text-foreground">{category.title}</h3>
                 <p className="text-sm text-foreground/70 mb-4">{category.description}</p>
-                <Button variant="link" asChild className="text-primary mt-auto">
-                  <Link href={category.link}>View Options</Link>
+                <Button variant="link" asChild className="text-primary mt-auto flex items-center space-x-2">
+                  <Link href={category.link} className="flex items-center space-x-2">
+                    <span>View Options</span>
+                    <ArrowRight className="text-sm" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -99,9 +102,9 @@ export default function Home() {
         key={i}
         src={client.logo}
         alt={client.name}
-        width={200}
-        height={150}
-        className="h-20 w-auto"
+        width={160}
+        height={120}
+        className="h-16 w-auto"
       />
     ))}
   </div>
