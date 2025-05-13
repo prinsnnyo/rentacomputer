@@ -19,7 +19,6 @@ export default function Footer() {
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
                 princeninoantigo@gmail.com
             </div>
-          </div>
           <div>
             <h3 className="text-xs font-semibold mb-3">QUICK LINKS</h3>
             <ul className="space-y-1">
