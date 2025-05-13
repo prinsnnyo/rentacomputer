@@ -18,6 +18,7 @@ export default function Footer() {
               <Mail className="h-4 w-4 text-primary" />
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
                 princeninoantigo@gmail.com
+                 </a>
             </div>
           <div>
             <h3 className="text-xs font-semibold mb-3">QUICK LINKS</h3>
