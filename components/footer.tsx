@@ -6,20 +6,24 @@ export default function Footer() {
     <footer className="bg-background text-foreground/70 border-t border-border/20 py-6">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* --- Column 1: Contact --- */}
           <div>
             <h3 className="text-xs font-semibold mb-3">CONTACT US</h3>
             <div className="flex items-center gap-2 mb-2">
               <Phone className="h-4 w-4 text-primary" />
               <a href="tel:+18005741166" className="text-xs hover:text-primary">
-               +63 981 655 0765
+                +63 981 655 0765
               </a>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-primary" />
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
                 princeninoantigo@gmail.com
-                 </a>
+              </a> {/* Fixed: Added closing tag */}
             </div>
+          </div>
+
+          {/* --- Column 2: Quick Links --- */}
           <div>
             <h3 className="text-xs font-semibold mb-3">QUICK LINKS</h3>
             <ul className="space-y-1">
@@ -43,36 +47,37 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
+          {/* --- Column 3: About --- */}
           <div>
-          <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
-          <p className="text-xs mb-2">Credits to Prince Niño Antigo for making this prototype</p>
-          <div className="flex space-x-2 mt-3">
-            {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
-              <Link
-                key={social}
-                href={`#${social}`}
-                className="w-7 h-7 rounded-full bg-foreground/20 flex items-center justify-center hover:bg-primary transition-colors"
-              >
-                <img
-                  src={
-                    social === "facebook"
-                      ? "/fb.png"
-                      : social === "x"
-                      ? "/X_logo.jpg" 
-                      : social === "linkedin"
-                      ? "/LinkedIn_logo_initials.png"
-                      : social === "youtube"
-                      ? "/yt.png"
-                      : "/ig.png"
-                  }
-                  alt={social}
-                  className="w-7 h-7" 
-                />
-                <span className="sr-only">{social}</span>
-              </Link>
-            ))}
+            <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
+            <p className="text-xs mb-2">Credits to Prince Niño Antigo for making this prototype</p>
+            <div className="flex space-x-2 mt-3">
+              {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
+                <Link
+                  key={social}
+                  href={`#${social}`}
+                  className="w-7 h-7 rounded-full bg-foreground/20 flex items-center justify-center hover:bg-primary transition-colors"
+                >
+                  <img
+                    src={
+                      social === "facebook"
+                        ? "/fb.png"
+                        : social === "x"
+                        ? "/X_logo.jpg" 
+                        : social === "linkedin"
+                        ? "/LinkedIn_logo_initials.png"
+                        : social === "youtube"
+                        ? "/yt.png"
+                        : "/ig.png"
+                    }
+                    alt={social}
+                    className="w-4 h-4 object-contain"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </footer>
