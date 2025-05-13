@@ -11,14 +11,13 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-2">
               <Phone className="h-4 w-4 text-primary" />
               <a href="tel:+18005741166" className="text-xs hover:text-primary">
-                +1 800 574 1166
+               +63 981 655 0765
               </a>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-primary" />
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
-                sales@rentacomputer.com
-              </a>
+                princeninoantigo@gmail.com
             </div>
           </div>
           <div>
