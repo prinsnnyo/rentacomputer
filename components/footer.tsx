@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
           <div>
           <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
-          <p className="text-xs mb-2">Providing professional IT equipment rental services since 1987.</p>
+          <p className="text-xs mb-2">Credits to Prince Niño Antigo for making this prototype</p>
           <div className="flex space-x-2 mt-3">
             {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
               <Link
