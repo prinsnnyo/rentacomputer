@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-primary" />
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
-                princeninoantigo@gmail.com
+                rentacomputer@gmail.com
               </a> {/* Fixed: Added closing tag */}
             </div>
           </div>
@@ -50,8 +50,7 @@ export default function Footer() {
 
           {/* --- Column 3: About --- */}
           <div>
-            <h3 className="text-xs font-semibold mb-3">ABOUT US</h3>
-            <p className="text-xs mb-2">Credits to Prince Niño Antigo for making this prototype</p>
+            <h3 className="text-xs font-semibold mb-3">FOLLOW US ON SOCIAL MEDIA</h3>
             <div className="flex space-x-2 mt-3">
               {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
                 <Link
