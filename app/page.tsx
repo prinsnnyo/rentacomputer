@@ -1,8 +1,10 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
+'use client';
+
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -30,6 +32,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Equipment Categories */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-8 text-center">RENTAL EQUIPMENT CATEGORIES</h2>
@@ -50,7 +53,7 @@ export default function Home() {
                 <h3 className="font-semibold mb-2 text-foreground">{category.title}</h3>
                 <p className="text-sm text-foreground/70 mb-4">{category.description}</p>
                 <Button variant="link" asChild className="text-primary mt-auto flex items-center space-x-2">
-                  <Link href={category.link} className="flex items-center space-x-2">
+                  <Link href={`/products?tab=${category.tab}`}>
                     <span>View Options</span>
                     <ArrowRight className="text-sm" />
                   </Link>
@@ -77,93 +80,92 @@ export default function Home() {
       </section>
 
       {/* Featured Clients */}
-     <section className="py-16 container mx-auto px-4">
-  <h2 className="text-2xl font-bold mb-8 text-center">OUR TRUSTED CLIENTS</h2>
-  <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
-    {[
-      {
-        name: "Procter & Gamble",
-        logo: "https://www.rentacomputer.com/pic/companypg.webp",
-      },
-      {
-        name: "Ford",
-        logo: "https://www.rentacomputer.com/pic/companyford.webp",
-      },
-      {
-        name: "Microsoft",
-        logo: "https://www.rentacomputer.com/pic/companymicrosoft.webp",
-      },
-      {
-        name: "General Electric",
-        logo: "https://www.rentacomputer.com/pic/companygeneralelectric.webp",
-      },
-    ].map((client, i) => (
-      <Image
-        key={i}
-        src={client.logo}
-        alt={client.name}
-        width={160}
-        height={120}
-        className="h-16 w-auto"
-      />
-    ))}
-  </div>
-</section>
-
+      <section className="py-16 container mx-auto px-4">
+        <h2 className="text-2xl font-bold mb-8 text-center">OUR TRUSTED CLIENTS</h2>
+        <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
+          {[
+            {
+              name: "Procter & Gamble",
+              logo: "https://www.rentacomputer.com/pic/companypg.webp",
+            },
+            {
+              name: "Ford",
+              logo: "https://www.rentacomputer.com/pic/companyford.webp",
+            },
+            {
+              name: "Microsoft",
+              logo: "https://www.rentacomputer.com/pic/companymicrosoft.webp",
+            },
+            {
+              name: "General Electric",
+              logo: "https://www.rentacomputer.com/pic/companygeneralelectric.webp",
+            },
+          ].map((client, i) => (
+            <Image
+              key={i}
+              src={client.logo}
+              alt={client.name}
+              width={160}
+              height={120}
+              className="h-16 w-auto"
+            />
+          ))}
+        </div>
+      </section>
     </div>
-  )
+  );
 }
 
 const categories = [
   {
     title: "LAPTOPS",
     description: "Business laptops, gaming laptops, and MacBooks for any temporary need.",
-    link: "/products/laptops",
+    tab: "laptops",
     image: "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/pc/matebook-x-pro-2022/specs/gray.png",
   },
   {
     title: "DESKTOPS",
     description: "High-performance workstations, gaming PCs, and Mac desktops.",
-    link: "/products/desktops",
+    tab: "desktops",
     image: "https://pngimg.com/d/computer_pc_PNG17489.png",
   },
   {
     title: "TABLETS",
     description: "iPads, Android tablets, and Windows tablets for mobile computing.",
-    link: "/products/tablets",
+    tab: "tablets",
     image: "https://pngimg.com/d/tablet_PNG8567.png",
   },
   {
     title: "SERVERS",
     description: "Rack servers, tower servers, and blade servers for temporary infrastructure.",
-    link: "/products/servers",
+    tab: "servers",
     image: "https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-server-3d-illustration-png-image_9231819.png",
   },
   {
     title: "AUDIO VISUAL",
     description: "Projectors, displays, sound systems, and video conferencing equipment.",
-    link: "/products/av",
+    tab: "av",
     image: "https://pngimg.com/d/audio_speakers_PNG11113.png",
   },
   {
     title: "NETWORKING",
     description: "Routers, switches, access points, and network security devices.",
-    link: "/products/networking",
+    tab: "networking",
     image: "https://purepng.com/public/uploads/large/purepng.com-routerelectronicsroutermodem-941524672790kvn3d.png",
   },
   {
     title: "PRINTERS",
     description: "Laser printers, inkjet printers, and multifunction devices.",
-    link: "/products/printers",
+    tab: "printers",
     image: "https://pngimg.com/d/printer_PNG101579.png",
   },
   {
     title: "ACCESSORIES",
     description: "Monitors, keyboards, mice, cables, and other peripherals.",
-    link: "/products/accessories",
+    tab: "accessories",
     image: "https://pngimg.com/d/keyboard_PNG101839.png",
   },
-]
+];
 
 const features = [
   {
@@ -178,4 +180,4 @@ const features = [
     title: "FLEXIBLE RENTAL TERMS",
     description: "Rent for as little as one day or as long as you need with our flexible rental options.",
   },
-]
+];
