@@ -1,13 +1,49 @@
+"use client"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Search } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function Products() {
+  const [search, setSearch] = useState("")
+
+  const filterProducts = (items: Product[]) =>
+    items.filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    )
+
+  const filteredLaptops = filterProducts(laptops)
+  const filteredDesktops = filterProducts(desktops)
+  const filteredTablets = filterProducts(tablets)
+  const filteredServers = filterProducts(servers)
+  const filteredAv = filterProducts(av)
+  const filteredNetworking = filterProducts(networking)
+  const filteredPrinters = filterProducts(printers)
+  const filteredAccessories = filterProducts(accessories)
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">RENTAL EQUIPMENT OPTIONS</h1>
+
+     <div className="mb-6 flex justify-center">
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-4 pr-12 py-2 text-black bg-white border-none rounded-full shadow-md focus:outline-none"
+            />
+            <div className="absolute right-0 top-0 h-full flex items-center pr-3">
+              <button className="bg-gray-600 hover:bg-gray-700 text-white rounded-full p-2">
+                <Search size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
 
       <Tabs defaultValue="laptops" className="w-full">
         <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 mb-8">
@@ -23,7 +59,7 @@ export default function Products() {
 
         <TabsContent value="laptops" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {laptops.map((product) => (
+            {filteredLaptops.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -31,7 +67,7 @@ export default function Products() {
 
         <TabsContent value="desktops" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {desktops.map((product) => (
+            {filteredDesktops.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -39,7 +75,7 @@ export default function Products() {
 
         <TabsContent value="tablets" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tablets.map((product) => (
+            {filteredTablets.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -47,7 +83,7 @@ export default function Products() {
 
         <TabsContent value="servers" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servers.map((product) => (
+            {filteredServers.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -55,7 +91,7 @@ export default function Products() {
 
         <TabsContent value="av" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {av.map((product) => (
+            {filteredAv.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -63,7 +99,7 @@ export default function Products() {
 
         <TabsContent value="networking" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {networking.map((product) => (
+            {filteredNetworking.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -71,7 +107,7 @@ export default function Products() {
 
         <TabsContent value="printers" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {printers.map((product) => (
+            {filteredPrinters.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -79,14 +115,11 @@ export default function Products() {
 
         <TabsContent value="accessories" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {accessories.map((product) => (
+            {filteredAccessories.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </TabsContent>
-
-
-        {/* Other tabs would follow the same pattern */}
       </Tabs>
 
       <div className="mt-12 text-center">
@@ -108,7 +141,7 @@ function ProductCard({ product }: { product: Product }) {
     <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-border/20 hover:border-primary/50 transition-colors">
       <div className="aspect-video relative bg-background/30">
         <Image
-          src={product.image} // Use the image URL from the product
+          src={product.image}
           alt={product.name}
           fill
           className="object-contain p-4"
