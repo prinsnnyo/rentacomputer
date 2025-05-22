@@ -46,7 +46,7 @@ export default function Products() {
         </div>
 
       <Tabs defaultValue="laptops" className="w-full">
-        <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 mb-8">
+      <TabsList className="flex overflow-x-auto space-x-2 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 mb-8 scrollbar-hide scroll-smooth">
           <TabsTrigger value="laptops">Laptops</TabsTrigger>
           <TabsTrigger value="desktops">Desktops</TabsTrigger>
           <TabsTrigger value="tablets">Tablets</TabsTrigger>
@@ -395,4 +395,3 @@ const accessories: Product[] = [
 }
 
 ]
-

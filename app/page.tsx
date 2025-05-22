@@ -15,14 +15,14 @@ export default function Home() {
         <div className="container mx-auto px-4 py-16 relative z-10 flex items-center justify-center">
           <div className="max-w-3xl">
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground text-center">
-              COMPLETE IT PROFESSIONALS FOR <span className="text-primary">TEMPORARY NEEDS</span>
+              Discover the Trusted Choice for Computer Rentals:
+                  A Partner with Reliable People and Comprehensive Inventory. 
             </h1>
             <p className="text-foreground/80 mb-8 max-w-2xl text-center">
-              Rentacomputer.com provides businesses with temporary technology solutions including computer rentals,
-              audio visual equipment, and professional IT services for events, projects, and emergencies.
+             At Rentacomputer.com, we know reliable technology solutions start with dependable people. Our team is dedicated to providing top-notch service and equipment, from computers to tablets, so you can trust us to meet your needs. Choose confidence, choose us.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild className="bg-primary hover:bg-primary/90 text-background">
+              <Button asChild className="bg-primary hover:bg-primary/70 text-background">
                 <Link href="/request">REQUEST A QUOTE</Link>
               </Button>
               <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">

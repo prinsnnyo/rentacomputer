@@ -15,16 +15,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CreditCardIcon, WalletIcon, CurrencyDollarIcon } from '@heroicons/react/24/solid'
 
 export default function RequestQuote() {
-  const [date, setDate] = useState<Date>()
+   const [deliveryDate, setDeliveryDate] = useState<Date>()
+  const [returnDate, setReturnDate] = useState<Date>()
   const [showSummary, setShowSummary] = useState(false)
+
 
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     email: "",
     phone: "",
-    rentalDate: "",
-    duration: "",
+    deliveryDate: "",
+    returnDate: "",
     equipment: "",
     quantity: "",
     location: "",
@@ -91,27 +93,27 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label>Rental Date</Label>
+                <Label>Delivery Date</Label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
                       variant={"outline"}
                       className={cn(
                         "w-full justify-start text-left font-normal bg-background/50",
-                        !date && "text-muted-foreground",
+                        !deliveryDate && "text-muted-foreground",
                       )}
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date ? format(date, "PPP") : <span>Select date</span>}
+                      {deliveryDate ? format(deliveryDate, "PPP") : <span>Select date</span>}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <Calendar
                       mode="single"
-                      selected={date}
+                      selected={deliveryDate}
                       onSelect={(selectedDate) => {
-                        setDate(selectedDate)
-                        setFormData({ ...formData, rentalDate: selectedDate ? format(selectedDate, "PPP") : "" })
+                        setDeliveryDate(selectedDate)
+                        setFormData({ ...formData, deliveryDate: selectedDate ? format(selectedDate, "PPP") : "" })
                       }}
                       initialFocus
                     />
@@ -120,23 +122,34 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="duration">Rental Duration</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, duration: value })}>
-                  <SelectTrigger className="bg-background/50">
-                    <SelectValue placeholder="Select duration" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-day">1 Day</SelectItem>
-                    <SelectItem value="2-3-days">2–3 Days</SelectItem>
-                    <SelectItem value="1-week">1 Week</SelectItem>
-                    <SelectItem value="2-weeks">2 Weeks</SelectItem>
-                    <SelectItem value="1-month">1 Month</SelectItem>
-                    <SelectItem value="custom">Custom Duration</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label>Return Date</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-full justify-start text-left font-normal bg-background/50",
+                        !returnDate && "text-muted-foreground",
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {returnDate ? format(returnDate, "PPP") : <span>Select date</span>}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={returnDate}
+                      onSelect={(selectedDate) => {
+                        setReturnDate(selectedDate)
+                        setFormData({ ...formData, returnDate: selectedDate ? format(selectedDate, "PPP") : "" })
+                      }}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
-
             <div className="space-y-4">
               <div>
                 <Label htmlFor="equipment">Equipment Needed</Label>
@@ -236,15 +249,17 @@ export default function RequestQuote() {
         company: "",
         email: "",
         phone: "",
-        rentalDate: "",
-        duration: "",
+        deliveryDate: "",
+        returnDate: "",
         equipment: "",
         quantity: "",
         location: "",
         payment: "",
         message: "",
       })
-      setDate(undefined)
+     setDeliveryDate(undefined)
+    setReturnDate(undefined)
+
     }
   }}
 >
@@ -262,8 +277,8 @@ export default function RequestQuote() {
         <li><strong>Company:</strong> {formData.company}</li>
         <li><strong>Email:</strong> {formData.email}</li>
         <li><strong>Phone:</strong> {formData.phone}</li>
-        <li><strong>Rental Date:</strong> {formData.rentalDate}</li>
-        <li><strong>Duration:</strong> {formData.duration}</li>
+        <li><strong>Delivery Date:</strong> {formData.deliveryDate}</li>
+        <li><strong>Return Date:</strong> {formData.returnDate}</li>
         <li><strong>Equipment:</strong> {formData.equipment}</li>
         <li><strong>Quantity:</strong> {formData.quantity}</li>
         <li><strong>Location:</strong> {formData.location}</li>
