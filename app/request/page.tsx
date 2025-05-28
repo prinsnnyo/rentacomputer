@@ -48,7 +48,7 @@ export default function RequestQuote() {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name">Full Name <span className="text-red-500">*</span></Label>
                 <Input
                   id="name"
                   placeholder="Enter your full name"
@@ -59,7 +59,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="company">Company Name</Label>
+                <Label htmlFor="company">Company Name <span className="text-red-500">*</span></Label>
                 <Input
                   id="company"
                   placeholder="Enter your company name"
@@ -70,7 +70,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
                 <Input
                   id="email"
                   type="email"
@@ -82,7 +82,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
                 <Input
                   id="phone"
                   placeholder="Enter your phone number"
@@ -93,7 +93,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label>Delivery Date</Label>
+                <Label>Delivery Date <span className="text-red-500">*</span></Label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
@@ -122,7 +122,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label>Return Date</Label>
+                <Label>Return Date <span className="text-red-500">*</span></Label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
@@ -152,7 +152,7 @@ export default function RequestQuote() {
             </div>
             <div className="space-y-4">
               <div>
-                <Label htmlFor="equipment">Equipment Needed</Label>
+                <Label htmlFor="equipment">Equipment Needed <span className="text-red-500">*</span></Label>
                 <Select onValueChange={(value) => setFormData({ ...formData, equipment: value })}>
                   <SelectTrigger className="bg-background/50">
                     <SelectValue placeholder="Select equipment type" />
@@ -171,7 +171,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="quantity">Quantity</Label>
+                <Label htmlFor="quantity">Quantity <span className="text-red-500">*</span></Label>
                 <Input
                   id="quantity"
                   type="number"
@@ -183,7 +183,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="location">Delivery Location</Label>
+                <Label htmlFor="location">Delivery Location <span className="text-red-500">*</span></Label>
                 <Input
                   id="location"
                   placeholder="Enter delivery address"
@@ -194,7 +194,7 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <Label htmlFor="payment">Payment Method</Label>
+                <Label htmlFor="payment">Payment Method <span className="text-red-500">*</span></Label>
                 <Select onValueChange={(value) => setFormData({ ...formData, payment: value })}>
                   <SelectTrigger className="bg-background/50">
                     <SelectValue placeholder="Select payment method" />
@@ -217,7 +217,7 @@ export default function RequestQuote() {
               </div>
 
               <div className="md:row-span-2">
-                <Label htmlFor="message">Additional Requirements</Label>
+                <Label htmlFor="message">Additional Requirements <span className="text-red-500">*</span></Label>
                 <Textarea
                   id="message"
                   placeholder="Please provide any specific requirements or questions"
