@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* --- Column 3: About --- */}
           <div>
-            <h3 className="text-xs font-semibold mb-3">FOLLOW US ON SOCIAL MEDIA</h3>
+            <h3 className="text-xs font-semibold mb-3">FOLLOW ME ON SOCIAL MEDIA</h3>
             <div className="flex space-x-2 mt-3">
               {["facebook", "x", "linkedin", "youtube", "instagram"].map((social) => (
                 <Link
