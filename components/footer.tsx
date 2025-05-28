@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-primary" />
               <a href="mailto:sales@rentacomputer.com" className="text-xs hover:text-primary">
-                rentacomputer@gmail.com
+                princeninoantigo@gmail.com
               </a> {/* Fixed: Added closing tag */}
             </div>
           </div>
